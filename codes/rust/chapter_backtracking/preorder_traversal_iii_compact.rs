@@ -1,7 +1,7 @@
 /*
  * File: preorder_traversal_iii_compact.rs
  * Created Time: 2023-07-15
- * Author: sjinzh (sjinzh@gmail.com)
+ * Author: codingonion (coderonion@gmail.com)
  */
 
 include!("../include/include.rs");
@@ -10,7 +10,11 @@ use std::{cell::RefCell, rc::Rc};
 use tree_node::{vec_to_tree, TreeNode};
 
 /* 前序遍历：例题三 */
-fn pre_order(res: &mut Vec<Vec<Rc<RefCell<TreeNode>>>>, path: &mut Vec<Rc<RefCell<TreeNode>>>, root: Option<Rc<RefCell<TreeNode>>>) {
+fn pre_order(
+    res: &mut Vec<Vec<Rc<RefCell<TreeNode>>>>,
+    path: &mut Vec<Rc<RefCell<TreeNode>>>,
+    root: Option<Rc<RefCell<TreeNode>>>,
+) {
     // 剪枝
     if root.is_none() || root.as_ref().unwrap().borrow().val == 3 {
         return;
@@ -25,7 +29,7 @@ fn pre_order(res: &mut Vec<Vec<Rc<RefCell<TreeNode>>>>, path: &mut Vec<Rc<RefCel
         pre_order(res, path, node.borrow().left.clone());
         pre_order(res, path, node.borrow().right.clone());
         // 回退
-        path.remove(path.len() -  1);
+        path.remove(path.len() - 1);
     }
 }
 
